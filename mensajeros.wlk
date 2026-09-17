@@ -1,4 +1,4 @@
-// --- Mensajeros --- 
+// Mensajeros  
 object jeanGray { 
 	method peso() = 65 
 	method puedeLlamar() = true 
@@ -27,7 +27,7 @@ object saraConnor {
 	}
 }
 
-// --- Vehículos --- 
+// Vehículos  
 object moto { 
 	method peso() = 100
 } 
@@ -39,7 +39,7 @@ var acoplados = 0
 	} method peso() = 500 + (acoplados * 500) 
 }
 
-// --- Paquete --- 
+// Paquete  
 object paquete { 
 	var estaPago = false 
 	var destino = laMatrix 
@@ -55,7 +55,7 @@ object paquete {
 		return estaPago && destino.dejaPasar(mensajero) 
 		} 
 }
-// --- Destinos --- 
+// Destinos  
 object puenteDeBrooklyn { 
 	method precio() = 150 
 	method dejaPasar(mensajero) = mensajero.peso() <- 1000 
