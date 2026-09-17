@@ -1,4 +1,4 @@
-// Mensajeros  
+
 object jeanGray { 
 	method peso() = 65 
 	method puedeLlamar() = true 
@@ -16,7 +16,7 @@ object neo {
 
 object saraConnor { 
 	var pesoPropio = 70
-	var vehiculo = moto 
+	var vehiculo = camion 
 	method pesoPropio() = pesoPropio 
 	method pesoPropio(_pesoPropio) { 
 		pesoPropio = _pesoPropio 
@@ -36,7 +36,8 @@ var acoplados = 0
 	method acoplados() = acoplados 
 	method acoplados(_acoplados) { 
 		acoplados = _acoplados 
-	} method peso() = 500 + (acoplados * 500) 
+	} 
+	method peso() = 500 + (acoplados * 500) 
 }
 
 // Paquete  

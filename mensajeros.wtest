@@ -1,0 +1,47 @@
+import sistemaDeMensajeros.*
+
+describe "pruebas de Paquetes de George" {
+
+test "probar que el precio del paquete será 150 si el paquete se 
+    envía al puente de Brooklyn " {
+    paquete.destino(puenteDeBrooklyn)
+    assert.equals(puenteDeBrooklyn.precio(),paquete.precio())
+}
+test "probar que al inicio el paquete no está  pago ,
+pero luego de marcarlo como pago si lo está " {
+   assert.notThat(paquete.estaPago())
+   paquete.pagar()
+   assert.that(paquete.estaPago())
+}
+test "probar que un paquete no pago no puede ser llevado por 
+neo a la matrix" {
+    paquete.destino(laMatrix)
+    assert.notThat(paquete.puedeSerEntregadoPor(neo))
+}
+
+test "probar que un paquete pago puede ser llevado por 
+    jeanGrey a la matrix" {
+    paquete.destino(laMatrix)
+    paquete.pagar()
+    assert.that(paquete.puedeSerEntregadoPor(jeanGray))
+    assert.that(paquete.estaPago())
+}
+
+test "probar que un paquete pago no puede ser llevado por 
+    saraConnor con un camion con un acoplado si va al 
+    puente de Brooklyn" {
+    paquete.destino(puenteDeBrooklyn)
+    paquete.pagar()
+    camion.acoplados(1)
+    assert.notThat (paquete.puedeSerEntregadoPor(saraConnor))
+}
+
+test "probar si un paquete pago puede ser llevado por 
+    saraConnor con una moto si va al puente de Brooklyn" {
+    saraConnor.vehiculo(moto)
+    paquete.destino(puenteDeBrooklyn)
+    paquete.pagar()
+    assert.that (paquete.puedeSerEntregadoPor(saraConnor))
+}
+
+}
