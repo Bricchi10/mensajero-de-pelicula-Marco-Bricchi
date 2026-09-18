@@ -1,5 +1,53 @@
 import sistemaDeMensajeros.*
 
+describe "Pruebas de la Empresa de Mensajería" {
+    method initialize(){
+        empresaMensajera.despedirATodos(empresaMensajera.conjuntoDeMensajeros)
+    }
+test "1- Contratar a un mensajero" { 
+    empresaMensajera.contratar(jeanGray) 
+    assert.that(empresaMensajera.conjuntoDeMensajeros.contains(jeanGray)) 
+    assert.equals(1, empresaMensajera.conjuntoDeMensajeros.size()) 
+    }
+
+test "2 Despedir a un mensajero" { 
+    empresaMensajera.contratar(jeanGray) 
+    empresaMensajera.contratar(neo) 
+    empresaMensajera.despedir(jeanGray) 
+    assert.notThat(empresaMensajera.conjuntoDeMensajeros.contains(jeanGray)) 
+    assert.equals(1, empresaMensajera.conjuntoDeMensajeros.size()) 
+}
+
+test "3 Despedir a todos los mensajeros" { 
+    empresaMensajera.contratar(jeanGray) 
+    empresaMensajera.contratar(neo) 
+    empresaMensajera.despedirATodos(empresaMensajera.conjuntoDeMensajeros) 
+    assert.that(empresaMensajera.conjuntoDeMensajeros.isEmpty()) 
+    }
+
+test "4 Analizar si la mensajería es grande" { 
+    empresaMensajera.contratar(jeanGray) 
+    empresaMensajera.contratar(neo)
+    empresaMensajera.contratar(saraConnor) 
+    assert.that(empresaMensajera.esGrande())   
+}
+
+test "5 Paquete entregado por el primer empleado de la mensajería" { 
+    empresaMensajera.contratar(jeanGray) 
+    empresaMensajera.contratar(saraConnor) 
+    paquete.destino(laMatrix) 
+    paquete.pagar() 
+    assert.that(empresaMensajera.puedeSerEntregadoPorPrimerEmpleado(paquete)) 
+}
+test "6 Peso del último mensajero de la empresa" { 
+    saraConnor.pesoPropio(70) // 70kg
+    saraConnor.vehiculo(moto) // 100kg 
+    empresaMensajera.contratar(jeanGray) 
+    empresaMensajera.contratar(saraConnor) 
+    assert.equals(170, empresaMensajera.pesoDeUltimoMensajero()) 
+}
+
+}
 describe "pruebas de Paquetes de George" {
 
 test "probar que el precio del paquete será 150 si el paquete se 

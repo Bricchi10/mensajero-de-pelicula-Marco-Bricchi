@@ -1,4 +1,34 @@
+//Empresa de Mensajeria
+object empresaMensajera{
+const conjuntoDeMensajeros = []
 
+method contratar(mensajero)  {
+	conjuntoDeMensajeros.add(mensajero)
+}
+
+method despedir(mensajero){
+	conjuntoDeMensajeros.remove(mensajero)
+}
+
+method despedirATodos(mensajeros){
+	conjuntoDeMensajeros.clear(mensajeros)
+}
+
+method esGrande(){
+	return	conjuntoDeMensajeros.size() > 2
+}
+
+method puedeSerEntregadoPorPrimerEmpleado(paqueteDado){
+	return if (conjuntoDeMensajeros.isEmpty()) false 
+				else paqueteDado.puedeSerEntregadoPor(conjuntoDeMensajeros.first())
+}
+
+method pesoDeUltimoMensajero(){
+	return conjuntoDeMensajeros.last().peso()
+}
+}
+
+//Mensajeros
 object jeanGray { 
 	method peso() = 65 
 	method puedeLlamar() = true 
