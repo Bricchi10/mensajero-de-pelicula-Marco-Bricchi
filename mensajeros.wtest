@@ -1,5 +1,38 @@
 import sistemaDeMensajeros.*
 
+describe "Pruebas de Mensajería Parte 3" { 
+    method initialize() { 
+        empresaMensajera.despedirATodos(empresaMensajera.conjuntoDeMensajeros) 
+        empresaMensajera.vaciarPendientes() 
+        empresaMensajera.reiniciarFacturacion() 
+        paquetonViajero.limpiarDestinos() 
+    } 
+    test "1 Averiguar si un paquete puede ser entregado por al menos un mensajero" { 
+        empresaMensajera.contratar(saraConnor) 
+        empresaMensajera.contratar(jeanGray) 
+        paquete.destino(laMatrix) 
+        paquete.pagar() 
+        assert.that(empresaMensajera.puedeSerEntregado(paquete)) 
+    }
+    test "2 Obtener todos los mensajeros que pueden llevar un paquete dado" { 
+        empresaMensajera.contratar(jeanGray) 
+        empresaMensajera.contratar(saraConnor) 
+        neo.tieneCredito(true) 
+        empresaMensajera.contratar(neo) 
+        paquete.destino(laMatrix) 
+        paquete.pagar() 
+        const posibles = empresaMensajera.mensajerosQuePuedenLlevar(paquete) 
+        assert.equals(2, posibles.size()) 
+        assert.that(posibles.contains(jeanGray)) 
+        assert.that(posibles.contains(neo)) 
+        assert.notThat(posibles.contains(saraConnor)) 
+        }
+    test "3 Saber si la mensajería tiene sobrepeso" { 
+        saraConnor.pesoPropio(70) 
+        camion.acoplados(2) 
+        empresaMensajera.contratar(saraConnor) 
+        assert.that(empresaMensajera.tieneSobrepeso()) }
+}
 describe "Pruebas de la Empresa de Mensajería" {
     method initialize(){
         empresaMensajera.despedirATodos(empresaMensajera.conjuntoDeMensajeros)
