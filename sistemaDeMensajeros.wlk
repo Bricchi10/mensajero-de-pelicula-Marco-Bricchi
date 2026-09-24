@@ -198,7 +198,7 @@ object paqueteExtra {
 // Destinos  
 object puenteDeBrooklyn { 
 	method precio() = 150 
-	method dejaPasar(mensajero) = mensajero.peso() <- 1000 
+	method dejaPasar(mensajero) = mensajero.peso() <= 1000 
 	} 
 
 object laMatrix { 
